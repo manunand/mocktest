@@ -18,6 +18,7 @@
 							<th style="color: black; font-size: 20px"><b>Test ID</b></th>
 							<th  style="color:black ;font-size: 20px"><b>Subject Name</b></th>
 							<th  style="color:black;font-size: 20px"><b>Test_name</b></th>
+							<th  style="color:black;font-size: 20px"><b>Test_Status</b></th>
 						</tr>
 					</thead>
 					<tbody style="background-color: transparent;">
@@ -36,7 +37,16 @@
 							$result=mysqli_query($conn, $sql);
 							if ($result-> num_rows >0) {
 								while ($row= $result-> fetch_assoc()) {
-									echo "<tr style='background-color:transparent; text-shadow:3px 3px 8px black'><td>".$row["test_id"]."</td><td>".$row["sub_name"]."</td><td>".$row["test_name"]."</td></tr>";
+									if ($row["test_status"] == 1) {
+			                      		$t_status="Uploading Stage";
+			                      	}
+			                      	elseif ($row["test_status"] == 2) {
+			                      		$t_status="Exam Stage";
+			                      	}
+			                      	else{
+			                      		$t_status="Result Stage";
+			                      	}
+									echo "<tr style='background-color:transparent; text-shadow:3px 3px 8px black'><td>".$row["test_id"]."</td><td>".$row["sub_name"]."</td><td>".$row["test_name"]."</td><td>".$t_status."</td></tr>";
 								}
 								echo "</table>";
 							}

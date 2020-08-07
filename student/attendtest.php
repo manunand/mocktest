@@ -47,13 +47,11 @@
 												<input type="radio" name="option[<?php echo $i; ?>]" value="4"  required><?php echo " D. ".$row['ans4']; ?><br><br>
 											</div>
 										</div>
-
 										<?php $i++;
 										$_SESSION['test_id'] = $test_id;
 										?>
 										</div><br><?php
 								}
-								
 							}
 							else{
 								?>

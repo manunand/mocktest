@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Mock Test | View Results</title>
+	<title>Mock Test | View Key Answers</title>
 </head>
 <body>
 	<header class="header">
 		<?php
 			include 'navbar.php';
 		?>
-		<form method="POST" action="viewresults.php">
+		<form method="POST" action="keyanswers.php">
 		<div class="container">
-			<h2 class="well well-sm" style="background-color:transparent; animation-duration: 3s;text-shadow:1px 1px 8px black; color: white"><b>Student Results</b></h2><br>
+			<h2 class="well well-sm" style="background-color:transparent; animation-duration: 3s;text-shadow:1px 1px 8px black; color: white"><b>Key Answer Details</b></h2><br>
 
 			<div class="form-group">
-                   <label class="control-label col-sm-2" for="test_id" style="text-align: right;">Choose Test:</label>
+                   <label class="control-label col-sm-2" for="test_id" style="text-align: right;">Choose Test</label>
                        <div class="col-sm-9">
-                  <select name="test_id" class="form-control" id="test_id" required style="background-color: transparent;">
+                  <select name="test_id" class="form-control" id="test_id" required="" style="background-color: transparent;">
+                    <option disabled selected>Choose any test</option>
                    <?php 
                     ini_set('display_errors', 1);
                     error_reporting (E_ALL);
@@ -27,7 +28,7 @@
                     if ($conn->connect_error) {
                       die("Connection failed: ");
                     }
-                    $sql="select * from tests,subject_list where tests.sub_id=subject_list.sub_id";
+                    $sql="select * from tests,subject_list where tests.sub_id=subject_list.sub_id and test_status='3' ";
                     $result=mysqli_query($conn, $sql);
                     if ($result-> num_rows >0) {
                       while ($row= $result-> fetch_assoc()) {
@@ -52,12 +53,14 @@
 				<table class="table table-striped" style=" font-weight: bold;text-shadow: 2px 2px 4px white">
 					<thead>
 						<tr>
-							<th style="color: black;"><b>Reg. Number</b></th>
-							<th style="color:black;"><b>Subject Name</b></th>
-							<th style="color:black;"><b>Test Name</b></th>
-							<th style="color: black;"><b>Test Date</b></th>
-							<th style="color: black;"><b>Answered Correctly</b></th>
-							<th style="color:black;"><b> Test Score</b></th>
+							<th style="color: black;"><b>Question ID</b></th>
+<!-- 							<th  style="color:black ;font-size: 20px"><b>Test Id</b></th>
+ -->						<th  style="color:black;width: 45%;"><b>Question </b></th>
+							<th style="color:black;"><b>Option A</b></th>
+							<th style="color: black;"><b>Option B</b></th>
+							<th style="color: black;"><b>Option C</b></th>
+							<th style="color:black;"><b>Option D</b></th>
+							<th style="color: black;"><b>True Answer</b></th>
 						</tr>
 					</thead>
 					<tbody style="background-color: transparent;">
@@ -75,11 +78,11 @@
 							if (isset($_POST['submit'])) {
 								$test_id =($_POST['test_id']);
 							
-							$sql="select result.reg_no,subject_list.sub_name,tests.test_name,result.test_date,result.correct_answers,result.score from result,tests,subject_list where result.test_id='".$test_id."' and result.test_id=tests.test_id and tests.sub_id=subject_list.sub_id order by result.reg_no";
+							$sql="select * from questions where test_id='".$test_id."'";
 							$result=mysqli_query($conn, $sql);
 							if ($result-> num_rows >0) {
 								while ($row= $result-> fetch_assoc()) {
-									echo "<tr style='background-color:transparent; text-shadow:3px 3px 8px black'><td>".$row["reg_no"]."</td><td>".$row["sub_name"]."</td><td>".$row["test_name"]."</td><td>".$row["test_date"]."</td><td>".$row["correct_answers"]."</td><td>".$row["score"]." %</td></tr>";
+									echo "<tr style='background-color:transparent; text-shadow:3px 3px 8px black'><td>".$row["que_id"]."</td><td>".$row["que_desc"]."</td><td>".$row["ans1"]."</td><td>".$row["ans2"]."</td><td>".$row["ans3"]."</td><td>".$row["ans4"]."</td><td>".$row["true_ans"]."</td></tr>";
 								}
 /*								echo "</table>";
 */							}

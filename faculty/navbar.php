@@ -71,6 +71,7 @@
 
 				          </ul>
 				        </li>
+				        <li><a href="viewteststatus.php"><b>Change test status</b></a></li>
 						<li class="dropdown">
 				          <a class="dropdown-toggle" data-toggle="dropdown" href="#" ><b>Hello <?php echo $username; ?>
 				          </b><span class="caret"></span></a>

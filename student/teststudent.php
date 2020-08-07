@@ -37,7 +37,7 @@
 							if ($conn->connect_error) {
 								die("Connection failed: ");
 							}
-							$sql="select * from tests,subject_list where tests.sub_id=subject_list.sub_id";
+							$sql="select * from tests,subject_list where tests.sub_id=subject_list.sub_id and test_status='2'";
 							$result=mysqli_query($conn, $sql);
 							if ($result-> num_rows >0) {
 								while ($row= $result-> fetch_assoc()) {

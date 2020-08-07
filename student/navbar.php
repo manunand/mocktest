@@ -32,6 +32,7 @@
 						<li><a href="#"><b>Team</b></a></li> -->
 						<li><a href="teststudent.php"><b>Tests</b></a></li>
 						<li><a href="viewresults.php"><b>Results</b></a></li>
+						<li><a href="keyanswers.php"><b>Key Answers</b></a></li>
 						<li class="dropdown">
 				          <a class="dropdown-toggle" data-toggle="dropdown" href="#" ><b>Hello <?php echo $username; ?>
 				          </b><span class="caret"></span></a>

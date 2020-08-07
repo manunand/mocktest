@@ -25,7 +25,7 @@ $address =($_POST['address']);
 							?><br><br><br>
 							<div class="alert alert-success">
 						  		<strong>Success!</strong> Your response has been successfully recorded.Thank you.
-								<meta http-equiv="refresh" content="6;url=index.php" />
+								<meta http-equiv="refresh" content="2;url=index.php" />
 							</div>
 
 							<?php
@@ -35,7 +35,7 @@ $address =($_POST['address']);
 							<br><br><br>
 							<div class="alert alert-danger">
 						  		<strong>Sorry!</strong> Please try to re enter your details. Please make sure your credentials.
-						  		<meta http-equiv="refresh" content="7;url=addfaculty.php" />
+						  		<meta http-equiv="refresh" content="4;url=addfaculty.php" />
 							</div>
 							<?php
 						} 

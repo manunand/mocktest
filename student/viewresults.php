@@ -34,14 +34,13 @@
 							if ($conn->connect_error) {
 								die("Connection failed: ");
 							}
-							$sql="select sub_name,test_name,correct_answers,score from tests,subject_list,result where result.reg_no='".$id."' and tests.test_id=result.test_id and tests.sub_id=subject_list.sub_id order by result.test_id";
+							$sql="select sub_name,test_name,correct_answers,score from tests,subject_list,result where result.reg_no='".$id."' and test_status='3' and tests.test_id=result.test_id and tests.sub_id=subject_list.sub_id order by result.test_id";
 							$result=mysqli_query($conn, $sql);
 							if ($result-> num_rows >0) {
 								while ($row= $result-> fetch_assoc()) {
 									echo "<tr style='background-color:transparent; text-shadow:3px 3px 8px black'><td>".$row["sub_name"]."</td><td>".$row["test_name"]."</td><td>".$row["correct_answers"]."</td><td>".$row["score"]." %</td></tr>";
 								}
 								echo "</table>";
-								echo "Your average Score is".$row['average']." ";
 							}
 							else{
 								echo "0 result";
