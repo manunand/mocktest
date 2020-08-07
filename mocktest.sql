@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
--- https://www.phpmyadmin.net/
+-- version 4.5.2
+-- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 03, 2020 at 11:04 AM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Generation Time: Aug 07, 2020 at 01:14 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -65,7 +63,7 @@ CREATE TABLE `faculty_login` (
 --
 
 INSERT INTO `faculty_login` (`id`, `username`, `password`, `privilege`) VALUES
-(6, 'anand', 'manu', 1),
+(6, 'admin', 'password', 1),
 (1, 'ranga', '123456', 1);
 
 -- --------------------------------------------------------
@@ -90,12 +88,19 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`que_id`, `test_id`, `que_desc`, `ans1`, `ans2`, `ans3`, `ans4`, `true_ans`) VALUES
-(1, 1, 'What is the preferred way for adding a background color in HTML?', '<body background=\"yellow\"> ', '<background>yellow</background> ', '< body style=\"background-color:yellow\">', '<background color=\"yellow\">text<background>', 3),
+(1, 1, 'What is the preferred way for adding a background color in HTML?', '<body background="yellow"> ', '<background>yellow</background> ', '< body style="background-color:yellow">', '<background color="yellow">text<background>', 3),
 (2, 1, 'Which of these tags are all <table> tags?', '<table><head><tfoot> ', '<table><tr><td>', '<table><tr><tt>', '<thead><body><tr>', 2),
 (3, 2, 'Which of the following function sets first n characters of a string to a given character?', 'strinit()', 'strnset()', 'strset()', 'strcset()', 2),
-(4, 2, ' What will be the output of following program ?\r\n\r\n#include <stdio.h>\r\nvoid main(){\r\n    int a=0;\r\n    a=5||2|1;\r\n    printf(\"%d\",a);\r\n}', '1', '7', '0', '8', 1),
-(5, 2, ' What will be the output?\r\nint main()\r\n{\r\n	int a=34;\r\n	printf(\"%d %i %p %n\",a,a,a,a);\r\n	return 0;\r\n}', '34 34 00 22', 'compilation error', '34', 'None of these.', 2),
-(6, 2, 'What the below code prints.\r\n#include<stdio.h>\r\nint main()\r\n{\r\n      return 0;\r\n      printf(\"hello\");\r\n}', 'hello', 'Hello', 'Gives error', 'it prints nothing', 4);
+(4, 2, ' What will be the output of following program ?\r\n\r\n#include <stdio.h>\r\nvoid main(){\r\n    int a=0;\r\n    a=5||2|1;\r\n    printf("%d",a);\r\n}', '1', '7', '0', '8', 1),
+(5, 2, ' What will be the output?\r\nint main()\r\n{\r\n	int a=34;\r\n	printf("%d %i %p %n",a,a,a,a);\r\n	return 0;\r\n}', '34 34 00 22', 'compilation error', '34', 'None of these.', 2),
+(6, 2, 'What the below code prints.\r\n#include<stdio.h>\r\nint main()\r\n{\r\n      return 0;\r\n      printf("hello");\r\n}', 'hello', 'Hello', 'Gives error', 'it prints nothing', 4),
+(7, 6, 'How constructor can be used for a servlet?', 'Initialization', 'Constructor function', 'Initialization and Constructor function', 'Setup() method', 3),
+(8, 6, 'Which of the following code is used to get an attribute in a HTTP Session object in servlets?', 'session.getAttribute(String name)', 'session.alterAttribute(String name)', 'session.updateAttribute(String name)', 'session.setAttribute(String name)', 1),
+(9, 6, 'Which method is used to get three-letter abbreviation for locale’s country in servlets?', 'Request.getISO3Country()', 'Locale.getISO3Country()', 'Response.getISO3Country()', 'Local.retrieveISO3Country()', 1),
+(10, 6, 'Which of the following code retrieves the body of the request as binary data?', 'DataInputStream data = new InputStream()', 'DataInputStream data = response.getInputStream()', 'DataInputStream data = request.getInputStream()', 'DataInputStream data = request.fetchInputStream()', 3),
+(11, 7, 'gcv hzsdchj azsv fgkjhvgjah zsjhv', 'jhbg xsja', 'jhg hjg', ' jhgbj khg', 'jhg jyhbguiy', 2),
+(12, 7, 'hb sjkhdbjhk sbJHfc j', 'bnhd shbg', 'kjh bgkjh g', 'b jkhgbiju', 'jk hbjk ujhgb', 2),
+(13, 7, 'zxsdfj ghjkgbs zkjbkjiusf hg bsdgb', 'jhbgsdf hjgbsdhji', 'jhy gjhg j', 'uyhygjhg', 'g jhvhjg', 2);
 
 -- --------------------------------------------------------
 
@@ -119,7 +124,14 @@ INSERT INTO `result` (`reg_no`, `test_id`, `test_date`, `correct_answers`, `scor
 ('1234', 2, '2020-03-03', 3, 75),
 ('179cs13002', 2, '2020-03-03', 3, 75),
 ('179cs13002', 1, '2020-03-03', 2, 100),
-('32', 2, '2020-03-03', 0, 0);
+('32', 2, '2020-03-03', 0, 0),
+('179cs17011', 2, '2020-03-04', 3, 75),
+('179cs17011', 1, '2020-03-04', 1, 50),
+('179cs17011', 6, '2020-03-09', 0, 0),
+('1234', 6, '2020-03-09', 3, 75),
+('1234', 7, '2020-04-05', 2, 67),
+('179cs17011', 7, '2020-08-07', 1, 33),
+('179cs17011', 7, '2020-08-07', 1, 17);
 
 -- --------------------------------------------------------
 
@@ -187,11 +199,14 @@ CREATE TABLE `subject_list` (
 --
 
 INSERT INTO `subject_list` (`sub_id`, `sub_name`) VALUES
+(8, 'accountancy'),
+(7, 'Advance Java'),
 (2, 'c programming'),
 (6, 'C++ Programming'),
 (3, 'Data structure'),
 (5, 'java'),
 (4, 'sql'),
+(9, 'szdfv'),
 (1, 'web programming');
 
 -- --------------------------------------------------------
@@ -203,19 +218,24 @@ INSERT INTO `subject_list` (`sub_id`, `sub_name`) VALUES
 CREATE TABLE `tests` (
   `test_id` int(5) NOT NULL,
   `sub_id` int(5) NOT NULL,
-  `test_name` varchar(30) NOT NULL
+  `test_name` varchar(30) NOT NULL,
+  `test_status` int(2) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tests`
 --
 
-INSERT INTO `tests` (`test_id`, `sub_id`, `test_name`) VALUES
-(1, 1, 'mock test'),
-(2, 2, 'Basics of c'),
-(3, 3, 'Basics of Data structure'),
-(4, 4, 'Basic sql queries'),
-(5, 6, 'Basics of C++ ');
+INSERT INTO `tests` (`test_id`, `sub_id`, `test_name`, `test_status`) VALUES
+(1, 1, 'mock test', 3),
+(2, 2, 'Basics of c', 3),
+(3, 3, 'Basics of Data structure', 1),
+(4, 4, 'Basic sql queries', 2),
+(5, 6, 'Basics of C++ ', 3),
+(6, 7, 'basics of advance java', 1),
+(7, 8, 'basics of accountancy', 2),
+(8, 9, 'sdzfvbvbh', 3),
+(9, 9, 'ababab', 1);
 
 -- --------------------------------------------------------
 
@@ -249,7 +269,30 @@ INSERT INTO `user_answer` (`reg_no`, `test_id`, `que_id`, `true_ans`, `given_ans
 ('32', 2, 3, 2, 1),
 ('32', 2, 4, 1, 2),
 ('32', 2, 5, 2, 3),
-('32', 2, 6, 4, 3);
+('32', 2, 6, 4, 3),
+('179cs17011', 2, 3, 2, 2),
+('179cs17011', 2, 4, 1, 1),
+('179cs17011', 2, 5, 2, 2),
+('179cs17011', 2, 6, 4, 3),
+('179cs17011', 1, 1, 3, 4),
+('179cs17011', 1, 2, 2, 2),
+('179cs17011', 6, 7, 3, 1),
+('179cs17011', 6, 8, 1, 2),
+('179cs17011', 6, 9, 1, 4),
+('179cs17011', 6, 10, 3, 4),
+('1234', 6, 7, 3, 3),
+('1234', 6, 8, 1, 1),
+('1234', 6, 9, 1, 1),
+('1234', 6, 10, 3, 2),
+('1234', 7, 11, 2, 2),
+('1234', 7, 12, 2, 2),
+('1234', 7, 13, 2, 1),
+('179cs17011', 7, 11, 2, 3),
+('179cs17011', 7, 12, 2, 2),
+('179cs17011', 7, 13, 2, 1),
+('179cs17011', 7, 11, 2, 0),
+('179cs17011', 7, 12, 2, 0),
+('179cs17011', 7, 13, 2, 0);
 
 --
 -- Indexes for dumped tables
@@ -325,26 +368,22 @@ ALTER TABLE `user_answer`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `que_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
+  MODIFY `que_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `subject_list`
 --
 ALTER TABLE `subject_list`
-  MODIFY `sub_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
+  MODIFY `sub_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tests`
 --
 ALTER TABLE `tests`
-  MODIFY `test_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
+  MODIFY `test_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- Constraints for dumped tables
 --
@@ -387,7 +426,6 @@ ALTER TABLE `user_answer`
   ADD CONSTRAINT `user_answer_ibfk_2` FOREIGN KEY (`reg_no`) REFERENCES `student` (`reg_no`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_answer_ibfk_3` FOREIGN KEY (`test_id`) REFERENCES `tests` (`test_id`),
   ADD CONSTRAINT `user_answer_ibfk_4` FOREIGN KEY (`que_id`) REFERENCES `questions` (`que_id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
